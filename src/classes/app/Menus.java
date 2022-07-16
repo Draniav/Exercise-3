@@ -7,7 +7,7 @@ public class Menus {
 
     public static void menuMain() {
         Messages.line();
-        System.out.println("|         Hello Welcome to BICI_U's App                   |");
+        System.out.println("|         Hello Welcome to BICI_U's App                  |");
         Messages.line();
         System.out.println("|              1- Register user.                         |");
         System.out.println("|              2- Borrow Bicycle.                        |");
@@ -15,6 +15,16 @@ public class Menus {
         System.out.println("|              4- Pay tickets.                           |");
         System.out.println("|              5- Tickets history.                       |");
         System.out.println("|              0- Exit program.                          |");
+        Messages.line();
+    }
+    public static void menuHistory() {
+        Messages.line();
+        System.out.println("|             Menu Tickets history                       |");
+        Messages.line();
+        System.out.println("|              1- Show all.                              |");
+        System.out.println("|              2- Search by code.                        |");
+        System.out.println("|              3- Search by status.                      |");
+        System.out.println("|              0- Go Back.                               |");
         Messages.line();
     }
 

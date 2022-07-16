@@ -1,6 +1,7 @@
 import classes.app.Events;
 import classes.app.Menus;
 import classes.app.Messages;
+import classes.vehicles.Bicycle;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -11,7 +12,8 @@ public class Main {
 
 
         Events events = new Events();
-        //ArrayList<Song> myPlayList = new ArrayList<>();
+        ArrayList<Bicycle> myBicycleList = new ArrayList<>();
+        ArrayList<String> myBicycleList2 = new ArrayList<>();
         //events.upLoadSongsLibrary(myPlayList);
 
         boolean bandera = false;
@@ -43,6 +45,14 @@ public class Main {
                          */
                         System.out.println("Borrow Bicycle code...");
 
+                        events.readFile("src/classes/txt/BicyclesDB.txt", myBicycleList2);
+                        System.out.println(myBicycleList2);
+                        Messages.tableBicycleDB();
+                        for (int i = 0; i < myBicycleList2.size(); i++) {
+                            System.out.println(myBicycleList2.get(i));
+                        }
+
+
                         break;
                     case 3:
                         /**
@@ -59,14 +69,40 @@ public class Main {
 
                         break;
                     case 5:
+                        //========================================================
                         /** This method creates a list with all tickets.
                          */
-
                         System.out.println("Tickets  history code...");
+                        boolean out = false;
+                        while (!out) {
+                            Menus.menuHistory();
+                            opt = input.nextInt();
+
+
+                            switch (opt) {
+                                case 1:
+                                    System.out.println("code to show all tickets");
+                                    break;
+                                case 2:
+                                    System.out.println("code to search by code");
+                                    break;
+                                case 3:
+                                    System.out.println("code to search by status");
+                                    break;
+                                case 0:
+
+                                    out = true;
+                                    break;
+
+                                default:
+                                    Messages.failureMsg2();
+                            }
+                        }
+                        //========================================================
                         break;
 
                     case 0:
-                       Messages.closingMsg();
+                        Messages.closingMsg();
                         System.exit(0);
                         break;
 

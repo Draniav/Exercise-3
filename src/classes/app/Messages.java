@@ -24,7 +24,7 @@ public class Messages {
      */
     public static void failureMsg2() {
 
-        System.out.println("ERROR, please type ONLY numbers between 0 and 5");
+        System.out.println("ERROR, please type ONLY numbers within the range of the menu");
 
     }
 
@@ -60,6 +60,16 @@ public class Messages {
         line();
         System.out.println("Thank you for using this app, have a nice day");
         line();
+
+    }
+    /**
+     * line to show a format in the menu bicycles.
+     */
+    public static void tableBicycleDB() {
+        System.out.println("============================================");
+        System.out.println("|   ID   |   Type   | Color | Availability |");
+        System.out.println("============================================");
+
 
     }
 }
