@@ -1,5 +1,6 @@
 package classes.app;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class Menus {
         System.out.println("|              0- Exit program.                          |");
         Messages.line();
     }
+
     public static void menuHistory() {
         Messages.line();
         System.out.println("|             Menu Tickets history                       |");
@@ -27,6 +29,18 @@ public class Menus {
         System.out.println("|              0- Go Back.                               |");
         Messages.line();
     }
+
+    public static void menuUser() {
+        Messages.line();
+        System.out.println("|             Menu Users                                 |");
+        Messages.line();
+        System.out.println("|              1- Show all Professors.                   |");
+        System.out.println("|              2- Show all Students.                     |");
+        System.out.println("|              3- Register new.                          |");
+        System.out.println("|              0- Go Back.                               |");
+        Messages.line();
+    }
+
 
     public static boolean menuContinue(boolean exit) {
         exit = true;

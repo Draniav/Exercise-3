@@ -69,7 +69,21 @@ public class Messages {
         System.out.println("============================================");
         System.out.println("|   ID   |   Type   | Color | Availability |");
         System.out.println("============================================");
+    }
+    public static void tableTicketsDB() {
+        System.out.println("===========================================================");
+        System.out.println("|  Code  |   UserID   |    Name    | Amount($) | Status |");
+        System.out.println("===========================================================");
 
 
     }
+    public static void tableUsersDB() {
+        System.out.println("=================================");
+        System.out.println("|   UserID   |    Name    | Age |");
+        System.out.println("=================================");
+
+
+    }
+
+
 }

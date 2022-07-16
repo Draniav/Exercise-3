@@ -1,7 +1,6 @@
 import classes.app.Events;
 import classes.app.Menus;
 import classes.app.Messages;
-import classes.vehicles.Bicycle;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -12,10 +11,9 @@ public class Main {
 
 
         Events events = new Events();
-        ArrayList<Bicycle> myBicycleList = new ArrayList<>();
         ArrayList<String> myBicycleList2 = new ArrayList<>();
-        //events.upLoadSongsLibrary(myPlayList);
 
+        boolean out = false;
         boolean bandera = false;
         /**
          * Main menu for program execution
@@ -38,6 +36,8 @@ public class Main {
                          */
                         System.out.println("Register user code...");
 
+                        Events.eventMenuUser();
+
                         break;
                     case 2:
                         /**
@@ -58,7 +58,6 @@ public class Main {
                         /**
                          * Function to return a bicycle.
                          */
-                        System.out.println("Return Bicycle code...");
 
                         break;
                     case 4:
@@ -69,19 +68,26 @@ public class Main {
 
                         break;
                     case 5:
-                        //========================================================
                         /** This method creates a list with all tickets.
                          */
                         System.out.println("Tickets  history code...");
-                        boolean out = false;
+
                         while (!out) {
                             Menus.menuHistory();
                             opt = input.nextInt();
 
-
                             switch (opt) {
                                 case 1:
                                     System.out.println("code to show all tickets");
+
+
+                                    events.readFile("src/classes/txt/Tickets.txt", myBicycleList2);
+                                    System.out.println(myBicycleList2);
+                                    Messages.tableTicketsDB();
+                                    for (int i = 0; i < myBicycleList2.size(); i++) {
+                                        System.out.println(myBicycleList2.get(i));
+                                    }
+
                                     break;
                                 case 2:
                                     System.out.println("code to search by code");
@@ -98,7 +104,7 @@ public class Main {
                                     Messages.failureMsg2();
                             }
                         }
-                        //========================================================
+
                         break;
 
                     case 0:
