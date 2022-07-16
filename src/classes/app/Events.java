@@ -41,8 +41,7 @@ public class Events {
         }
 
     }
-
-    public static void eventMenuUser() {
+     public static void eventMenuUser() {
         boolean out = false;
         Integer opt = 0;
         Scanner input = new Scanner(System.in);
@@ -82,6 +81,13 @@ public class Events {
                     Messages.failureMsg2();
             }
         }
+    }
+    /** This method lets register a new user.
+     */
+    public static void eventRegisterUser(){
+
+
+
     }
 
 
