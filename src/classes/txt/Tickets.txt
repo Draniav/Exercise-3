@@ -1,3 +1,5 @@
-T-0000001;S-0000000001;Mary Rojas  ;     14    ;  OK
-T-0000002;P-0000000001;Juan Perez  ;     10    ;  pending
-T-0000003;S-0000000002;David Murcia;     14    ;  Active
+T-0000001;S-0000000001;Mary Rojas;OK;14
+T-0000002;P-0000000001;Juan Perez;pending;10
+T-0000003;S-0000000002;David Murcia;Active;14
+T-0000004;S-0000000001;Andres Rojas;OK;14
+T-0000005;S-0000000001;Mary Paez;OK;14

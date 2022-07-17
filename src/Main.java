@@ -4,14 +4,16 @@ import classes.app.Messages;
 import classes.persons.Person;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-
+        String search;
         Events events = new Events();
 
         ArrayList<String> myBicycleList2 = new ArrayList<>();
@@ -81,7 +83,6 @@ public class Main {
                                 case 1:
                                     System.out.println("code to show all tickets");
 
-
                                     events.readFile("src/classes/txt/Tickets.txt", myBicycleList2);
                                     System.out.println(myBicycleList2);
                                     Messages.tableTicketsDB();
@@ -91,10 +92,18 @@ public class Main {
 
                                     break;
                                 case 2:
-                                    System.out.println("code to search by code");
+                                    System.out.println("type the code to search");
+
+                                    search = input.next();
+                                    Messages.tableTicketsDB();
+                                    events.searchInFile("src/classes/txt/Tickets.txt", search);
                                     break;
                                 case 3:
                                     System.out.println("code to search by status");
+
+                                    search = input.next();
+                                    Messages.tableTicketsDB();
+                                    events.searchInFile("src/classes/txt/Tickets.txt", search);
                                     break;
                                 case 0:
 

@@ -55,14 +55,36 @@ public class Events {
             fw = new FileWriter(file_dir, true);
             PrintWriter pw = new PrintWriter(fw);
             pw.println(text);
-            // pw.print(text);
             pw.flush();
 
             System.out.println("file updated");
         } catch (IOException exception) {
             System.err.println("file not found ");
         } finally {
+            assert fw != null;
             fw.close();
+        }
+    }
+
+    /**
+     * method to  search a word in  the txt
+     */
+    public void searchInFile(String file_dir, String text) {
+        String line;
+
+
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(file_dir));
+            while ((line = bf.readLine()) != null) {
+                  String[] word = line.split(";");
+                for (int i = 0; i < word.length; i++) {
+                    if (word[i].equals(text)) {
+                        System.out.println(line);
+                    }
+                }
+            }
+        } catch (IOException exception) {
+            System.err.println("file not found ");
         }
     }
 
@@ -97,14 +119,12 @@ public class Events {
                     break;
                 case 3:
                     Person pe = new Person();
-                    String user_to_register = "";
+
                     System.out.println("code to register new User");
-                    events.readFile("src/classes/txt/StudentDB.txt", myUserList);
 
-                    user_to_register = pe.registerUser(user_to_register);
+                    pe.registerUser();
 
 
-                    events.writeFile("src/classes/txt/StudentDB2.txt", user_to_register);
                     out = true;
                     break;
                 case 0:
@@ -116,14 +136,6 @@ public class Events {
                     Messages.failureMsg2();
             }
         }
-    }
-
-    /**
-     * This method lets register a new user.
-     */
-    public static void eventRegisterUser() {
-
-
     }
 
 

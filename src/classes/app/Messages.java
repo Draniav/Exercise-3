@@ -71,9 +71,9 @@ public class Messages {
         System.out.println("============================================");
     }
     public static void tableTicketsDB() {
-        System.out.println("===========================================================");
-        System.out.println("|  Code  |   UserID   |    Name    | Amount($) | Status |");
-        System.out.println("===========================================================");
+        System.out.println("=================================================");
+        System.out.println("|  Code  |   UserID   |   Name   | Status | ($) |");
+        System.out.println("=================================================");
 
 
     }
