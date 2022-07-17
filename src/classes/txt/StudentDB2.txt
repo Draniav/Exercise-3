@@ -1,6 +1,0 @@
-S-0000000001 ;Mary Rojas  ;     28
-S-0000000001 ;Mary Rojas  ;     28
-S-0000000001 ;Mary Rojas  ;     28
-S-1 ;Alex;reyes;34
-P-1 ;Alex;Reyes;33
-S-1 ;Pablo;Rivas;23

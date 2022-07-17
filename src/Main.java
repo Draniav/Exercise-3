@@ -67,8 +67,10 @@ public class Main {
                         /**
                          * Function to  pay a ticket.
                          */
-                        System.out.println("Pay Tickets code...");
-
+                        System.out.println("type the Ticket's ID to pay ");
+                        String ticket = input.next();
+                        events.modifyFile("src/classes/txt/TicketsDB.txt", "pending", "ok");
+                        System.out.println("ID :"+ticket+" was successfully updated");
                         break;
                     case 5:
                         /** This method creates a list with all tickets.

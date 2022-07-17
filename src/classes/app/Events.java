@@ -53,6 +53,7 @@ public class Events {
 
         try {
             fw = new FileWriter(file_dir, true);
+
             PrintWriter pw = new PrintWriter(fw);
             pw.println(text);
             pw.flush();
@@ -75,11 +76,13 @@ public class Events {
 
         try {
             BufferedReader bf = new BufferedReader(new FileReader(file_dir));
+
             while ((line = bf.readLine()) != null) {
-                  String[] word = line.split(";");
+                String[] word = line.split(";");
                 for (int i = 0; i < word.length; i++) {
                     if (word[i].equals(text)) {
                         System.out.println(line);
+
                     }
                 }
             }
@@ -88,6 +91,32 @@ public class Events {
         }
     }
 
+    public void searchInFileAndEdit(String file_dir, String text) {
+        String line;
+
+
+
+        try {
+
+            BufferedReader bf = new BufferedReader(new FileReader(file_dir));
+
+            while ((line = bf.readLine()) != null) {
+                String[] word = line.split(";");
+                for (int i = 0; i < word.length; i++) {
+                    if (word[i].equals(text)) {
+                        System.out.println(word[i]);
+                        System.out.println(line);
+                        line.replaceAll("ok", "pending");
+
+                    }
+                }
+            }
+        } catch (IOException exception) {
+            System.err.println("file not found ");
+        }
+
+
+    }
 
     public static void eventMenuUser() throws IOException {
         boolean out = false;
@@ -137,6 +166,38 @@ public class Events {
             }
         }
     }
+
+    public static void modifyFile(String filePath, String oldString, String newString) {
+
+        String oldContent = "";
+        BufferedReader br = null;
+        FileWriter fw = null;
+        try {
+            br = new BufferedReader(new FileReader(filePath));
+            //Reading all the lines of input text file into oldContent
+            String line = br.readLine();
+            while (line != null) {
+                oldContent = oldContent + line + System.lineSeparator();
+                line = br.readLine();
+            }
+            //Replacing oldString with newString in the oldContent
+            String newContent = oldContent.replaceAll(oldString, newString);
+            //Rewriting the input text file with newContent
+            fw = new FileWriter(filePath);
+            fw.write(newContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //Closing the resources
+                br.close();
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 
 }
