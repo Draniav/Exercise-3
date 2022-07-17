@@ -3,6 +3,7 @@ package classes.persons;
 import classes.app.Events;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,18 +24,20 @@ public class Person {
 
     }
 
-    protected int assingID(int id) {
-        id += 1;
+    protected int assaingID(String file_dir, int id) {
+        Events ev = new Events();
+        ArrayList<String> myBicycleList2 = new ArrayList<>();
+        ev.readFile(file_dir, myBicycleList2);
+        id = (myBicycleList2.size() + 1);
         return id;
     }
-
 
 
     public String registerUser() {
         Events ev = new Events();
         int id = 0;
         int a = 1;
-        id = assingID(id);
+
         Scanner sn = new Scanner(System.in);
 
         while (a == 1) {
@@ -44,6 +47,7 @@ public class Person {
                 a = sn.nextInt();
                 switch (a) {
                     case 1:
+                        id = assaingID("src/classes/txt/ProfessorDB.txt",id);
                         String user_to_register = "P-" + id;
                         System.out.println(" Register new Professor");
                         sn.nextLine();
@@ -58,6 +62,7 @@ public class Person {
                         a = 3;
                         break;
                     case 2:
+                        id = assaingID("src/classes/txt/StudentDB.txt",id);
                         user_to_register = "S-" + id;
                         System.out.println("   Register new Student :) ");
                         sn.nextLine();

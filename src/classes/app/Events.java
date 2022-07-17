@@ -91,32 +91,7 @@ public class Events {
         }
     }
 
-    public void searchInFileAndEdit(String file_dir, String text) {
-        String line;
 
-
-
-        try {
-
-            BufferedReader bf = new BufferedReader(new FileReader(file_dir));
-
-            while ((line = bf.readLine()) != null) {
-                String[] word = line.split(";");
-                for (int i = 0; i < word.length; i++) {
-                    if (word[i].equals(text)) {
-                        System.out.println(word[i]);
-                        System.out.println(line);
-                        line.replaceAll("ok", "pending");
-
-                    }
-                }
-            }
-        } catch (IOException exception) {
-            System.err.println("file not found ");
-        }
-
-
-    }
 
     public static void eventMenuUser() throws IOException {
         boolean out = false;
@@ -167,7 +142,7 @@ public class Events {
         }
     }
 
-    public static void modifyFile(String filePath, String oldString, String newString) {
+    public static void modifyFile(String filePath, String oldStatus, String newStatus) {
 
         String oldContent = "";
         BufferedReader br = null;
@@ -180,24 +155,21 @@ public class Events {
                 oldContent = oldContent + line + System.lineSeparator();
                 line = br.readLine();
             }
-            //Replacing oldString with newString in the oldContent
-            String newContent = oldContent.replaceAll(oldString, newString);
-            //Rewriting the input text file with newContent
+            String newContent = oldContent.replaceAll(oldStatus, newStatus);
             fw = new FileWriter(filePath);
             fw.write(newContent);
         } catch (IOException e) {
-            e.printStackTrace();
+
         } finally {
             try {
                 //Closing the resources
                 br.close();
                 fw.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("file not found ");
             }
         }
     }
-
 
 
 }
