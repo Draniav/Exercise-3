@@ -1,7 +1,8 @@
 package classes.app;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import classes.persons.Person;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -41,7 +42,32 @@ public class Events {
         }
 
     }
-     public static void eventMenuUser() {
+
+    /**
+     * This method to  write a txt.
+     */
+    public void writeFile(String file_dir, String text) throws IOException {
+
+
+        FileWriter fw = null;
+
+        try {
+            fw = new FileWriter(file_dir, true);
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println(text);
+            // pw.print(text);
+            pw.flush();
+
+            System.out.println("file updated");
+        } catch (IOException exception) {
+            System.err.println("file not found ");
+        } finally {
+            fw.close();
+        }
+    }
+
+
+    public static void eventMenuUser() throws IOException {
         boolean out = false;
         Integer opt = 0;
         Scanner input = new Scanner(System.in);
@@ -70,7 +96,16 @@ public class Events {
                     eventPrintAll(myUserList);
                     break;
                 case 3:
+                    Person pe = new Person();
+                    String user_to_register = "";
                     System.out.println("code to register new User");
+                    events.readFile("src/classes/txt/StudentDB.txt", myUserList);
+
+                    user_to_register = pe.registerUser(user_to_register);
+
+
+                    events.writeFile("src/classes/txt/StudentDB2.txt", user_to_register);
+                    out = true;
                     break;
                 case 0:
 
@@ -82,10 +117,11 @@ public class Events {
             }
         }
     }
-    /** This method lets register a new user.
-     */
-    public static void eventRegisterUser(){
 
+    /**
+     * This method lets register a new user.
+     */
+    public static void eventRegisterUser() {
 
 
     }

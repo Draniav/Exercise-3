@@ -1,7 +1,9 @@
 import classes.app.Events;
 import classes.app.Menus;
 import classes.app.Messages;
+import classes.persons.Person;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,6 +13,7 @@ public class Main {
 
 
         Events events = new Events();
+
         ArrayList<String> myBicycleList2 = new ArrayList<>();
 
         boolean out = false;
@@ -18,6 +21,7 @@ public class Main {
         /**
          * Main menu for program execution
          */
+
         do {
             Scanner input = new Scanner(System.in);
             int opt;
@@ -46,11 +50,8 @@ public class Main {
                         System.out.println("Borrow Bicycle code...");
 
                         events.readFile("src/classes/txt/BicyclesDB.txt", myBicycleList2);
-                        System.out.println(myBicycleList2);
                         Messages.tableBicycleDB();
-                        for (int i = 0; i < myBicycleList2.size(); i++) {
-                            System.out.println(myBicycleList2.get(i));
-                        }
+                        events.eventPrintAll(myBicycleList2);
 
 
                         break;
@@ -118,6 +119,8 @@ public class Main {
             } catch (InputMismatchException e) {
                 Messages.failureMsg();
                 bandera = Menus.menuContinue(false);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
         } while (!bandera);

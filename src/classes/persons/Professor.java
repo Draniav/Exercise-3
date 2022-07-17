@@ -12,4 +12,6 @@ public class Professor extends Person implements Ipersons{
     public void assignID() {
         System.out.println("code to assign the ID to  professor ,  must  be  P-<consecutive> ");
     }
+
+
 }
