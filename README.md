@@ -34,10 +34,11 @@ Create an application what  that allow students and professors to borrow bicycle
 
 ## Archives
 
-> ### folder Src             : Archive what contains the main code to run  the application 
-> ### Black-jack.html        : Archive what contains the code to run  the application in  html (incomplete)
-> ### cards.js, player.js    : Archive what contains OOP from  cards and player
-> ### Style.css              : Archive what controls the styles into Black-jack.html 
+> ### folder Src             : Archive what contains the main code to run  the application. 
+> ### folder app             : Archive what contains the classes needed for control the app's behavior.
+> ### folder person          : Archive what contains OOP from  Persons and player.
+> ### folder txt             : Archive what stores the different registers.
+> ### folder vehicles        : Archive what stores the OOP for the Bicycles.
 >
 ## IDE
 
@@ -48,7 +49,10 @@ The workshop was developed using IntelliJ Express.
 ## Status
 >in develop
 
->last update 7/15/2022.    
+>last update 7/17/2022.    
 
 ## Screen Shoots
-
+some menus to  show how the app looks and how u  can  navigate in it.
+<img src="src/screenshots/autoassigante ID + users.png"/>.  
+<img src="src/screenshots/history + filters.png"/>.
+<img src="src/screenshots/menu +updates.png"/>.
