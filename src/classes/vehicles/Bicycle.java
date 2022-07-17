@@ -1,8 +1,11 @@
 package classes.vehicles;
 
 import classes.app.Events;
+import classes.app.Messages;
 
 import java.io.IOException;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -21,13 +24,24 @@ public class Bicycle {
         this.availability = availability;
     }
 
+    public Bicycle() {
+
+    }
+
     @Override
     public String toString() {
         return "Bicycle{" + "id=" + id + ", type='" + type + '\'' + ", color='" + color + '\'' + ", availability=" + availability + '}';
     }
 
+    protected int assaingID(String file_dir, int id) {
+        Events ev = new Events();
+        ArrayList<String> myList = new ArrayList<>();
+        ev.readFile(file_dir, myList);
+        id = (myList.size() + 1);
+        return id;
+    }
 
-    public String registerUser() {
+    public String registerBorrow() {
         Events ev = new Events();
         int id = 0;
         int a = 1;
@@ -35,39 +49,32 @@ public class Bicycle {
 
         while (a == 1) {
             try {
-                System.out.println(" press 1:to  Professor. 2:to Student");
+                Messages.line();
+                System.out.println(" press 1:to  mountain. 2:to Road");
+                Messages.line();
 
                 a = sn.nextInt();
                 switch (a) {
                     case 1:
-                        String user_to_register = "P-" + id;
-                        System.out.println(" Register new Professor");
-                        sn.nextLine();
-                        System.out.println(" Type the  name ");
-                        user_to_register = user_to_register + ";" + sn.nextLine();
-                        System.out.println(" Type the sure name ");
-                        user_to_register = user_to_register + ";" + sn.nextLine();
-                        System.out.println(" Type the age");
-                        user_to_register = user_to_register + ";" + sn.nextLine();
-                        ev.writeFile("src/classes/txt/ProfessorDB.txt", user_to_register);
-                        System.out.println("The Professor {" + user_to_register + "} was successfully Registered ");
-                        a = 3;
-                        break;
-                    case 2:
-                        user_to_register = "S-" + id;
-                        System.out.println("   Register new Student :) ");
-                        sn.nextLine();
-                        System.out.println(" Type the  name ");
-                        user_to_register = user_to_register + ";" + sn.nextLine();
-                        System.out.println(" Type the sure name ");
-                        user_to_register = user_to_register + ";" + sn.nextLine();
-                        System.out.println(" Type the age");
-                        user_to_register = user_to_register + ";" + sn.nextLine();
-                        ev.writeFile("src/classes/txt/StudentDB.txt", user_to_register);
-                        System.out.println("The student {" + user_to_register + "} was successfully Registered ");
 
+                        id = assaingID("src/classes/txt/Tickets.txt",id);
+                        String user_to_register = "T-" + id;
+                        System.out.println(" Register new Mountain Borrow");
+                        sn.nextLine();
+                        System.out.println(" Type the  User ID  ");
+                        user_to_register = user_to_register + ";" + sn.nextLine();
+                        System.out.println(" Type the User's name ");
+                        user_to_register = user_to_register + ";"+ sn.nextLine();
+                        System.out.println(" Type the User's sure name ");
+                        user_to_register = user_to_register + " " + sn.nextLine()+";"+"pending";
+                        System.out.println(" Type the age");
+                        user_to_register = user_to_register + ";" + sn.nextLine()+";"+ LocalTime.now();
+                        ev.writeFile("src/classes/txt/Tickets.txt", user_to_register);
+                        System.out.println("The Borrow {" + user_to_register + "} was successfully Registered ");
                         a = 3;
                         break;
+
+
                     default:
                         System.out.println("Type only numbers please (1:to  Professor. 2:to Student");
 
@@ -89,6 +96,7 @@ public class Bicycle {
         return null;
 
     }
+
 
 
 }

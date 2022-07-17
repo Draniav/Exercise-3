@@ -1,21 +1,20 @@
 import classes.app.Events;
 import classes.app.Menus;
 import classes.app.Messages;
-import classes.persons.Person;
+import classes.vehicles.Bicycle;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+        String ticket;
         String search;
         Events events = new Events();
-
+        Bicycle bi = new Bicycle();
         ArrayList<String> myBicycleList2 = new ArrayList<>();
 
         boolean out = false;
@@ -54,24 +53,28 @@ public class Main {
                         events.readFile("src/classes/txt/BicyclesDB.txt", myBicycleList2);
                         Messages.tableBicycleDB();
                         events.eventPrintAll(myBicycleList2);
-
+                        bi.registerBorrow();
 
                         break;
                     case 3:
                         /**
                          * Function to return a bicycle.
                          */
-
+                        System.out.println("type the Ticket's ID to return the Bicycle");
+                        ticket = input.next();
+                        events.searchInFile("src/classes/txt/Tickets.txt", ticket);
+                        events.modifyFile("src/classes/txt/Tickets.txt", "pending", "ok");
+                        System.out.println("ID :" + ticket +"; was successfully updated at "+ LocalTime.now());
                         break;
                     case 4:
                         /**
                          * Function to  pay a ticket.
                          */
                         System.out.println("type the Ticket's ID to pay ");
-                        String ticket = input.next();
-                        events.searchInFile("src/classes/txt/TicketsDB.txt",ticket);
+                        ticket = input.next();
+                        events.searchInFile("src/classes/txt/TicketsDB.txt", ticket);
                         events.modifyFile("src/classes/txt/TicketsDB.txt", "pending", "ok");
-                        System.out.println("ID :"+ticket+" was successfully updated");
+                        System.out.println("ID :" + ticket + " was successfully updated");
                         break;
                     case 5:
                         /** This method creates a list with all tickets.
@@ -84,10 +87,11 @@ public class Main {
 
                             switch (opt) {
                                 case 1:
+                                    myBicycleList2.clear();
                                     System.out.println("code to show all tickets");
 
                                     events.readFile("src/classes/txt/Tickets.txt", myBicycleList2);
-                                    System.out.println(myBicycleList2);
+
                                     Messages.tableTicketsDB();
                                     for (int i = 0; i < myBicycleList2.size(); i++) {
                                         System.out.println(myBicycleList2.get(i));
