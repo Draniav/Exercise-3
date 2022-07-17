@@ -33,5 +33,7 @@ bin/
 *.xml
 *.pb
 *.xml
-.idea/misc.xml
+.ideas/misc.xml
+*.xml
+*.xml
 *.xml
